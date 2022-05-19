@@ -3,14 +3,12 @@ private:
 	friend struct MMCtrl;
 	friend struct MMImp;
 
-	static int                 WndCaretTime;
-	static bool                WndCaretVisible;
-	static bool                local_dnd_copy;
-	static void AnimateCaret();
-	static Ptr<Ctrl>           lastActive;
+	static bool      local_dnd_copy;
+	static Ptr<Ctrl> lastActive;
 	
 	friend void CocoInit(int argc, const char **argv, const char **envptr);
-	
+	static int    GetCaretBlinkTime()               { return 500; }
+
 protected:
 	virtual void MMClose() {}
 
