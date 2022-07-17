@@ -1,0 +1,12 @@
+#ifndef _Build_info_h_
+#define _Build_info_h_
+
+
+
+.PHONY: build_info
+build_info:
+	(date '+#define bmYEAR    %y%n#define bmMONTH   %m%n#define bmDAY     %d%n#define bmHOUR    %H%n#define bmMINUTE  %M%n#define bmSECOND  %S%n#define bmTIME    Time( %y, %m, %d, %H, %M, %S )' | sed 's| 0\([[:digit:]]\)| \1|g' && \
+	echo '#define bmMACHINE "'`hostname`'"' && \
+	echo '#define bmUSER    "'`whoami`'"') > "$(UPPOUT)/build_info.h"
+
+#endif
