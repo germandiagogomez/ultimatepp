@@ -7,7 +7,7 @@
 #define PCRE_EXP_DECL extern 
 #endif
 
-#include "lib/pcre.h"
+#include <pcre.h>
 
 namespace Upp {
 

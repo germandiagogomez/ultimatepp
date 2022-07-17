@@ -8,7 +8,7 @@ sources = [ 'Android.cpp',
             'NDKBuild.cpp']
 
 
-ideandroid_dependencies = [pcre_plugin_dep]
+ideandroid_dependencies = [core_dep, pcre_plugin_dep]
 
 
 ideandroid_lib = library('IdeAndroid', sources: sources,

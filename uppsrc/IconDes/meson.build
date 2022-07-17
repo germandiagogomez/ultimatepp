@@ -19,8 +19,9 @@ gtk_dep = dependency('gtk+-3.0')
 icondes_lib = library('IconDes', sources: sources,
                    include_directories:
                      [uppsrc_inc],
-                   dependencies: gtk_dep)
+                   dependencies: [core_dep, gtk_dep])
 
 icondes_dep = declare_dependency(link_with: icondes_lib,
                                  include_directories: uppsrc_inc,
-                                dependencies: gtk_dep)
+                                 dependencies: [gtk_dep,
+                                core_dep])

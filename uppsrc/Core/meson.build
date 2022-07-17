@@ -74,10 +74,14 @@ sources = [
   'Win32Util.cpp',
 ]
 
+core_dependencies = [dependency('libzstd')]
 
 core_lib = library('Core', sources: sources,
                    include_directories:
-                      [uppsrc_inc])
+                      [uppsrc_inc],
+                   dependencies: core_dependencies)
+
 
 core_dep = declare_dependency(link_with: core_lib,
-                     include_directories: [uppsrc_inc])
+                              include_directories: [uppsrc_inc],
+                              dependencies: dependency('libzstd'))

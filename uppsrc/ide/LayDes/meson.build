@@ -19,6 +19,6 @@ idelaydes_lib = library('IdeLayDes', sources: sources,
                               include_directories:
                                 ['.',
                                  uppsrc_inc],
-                                dependencies: ctrllib_dep)
+                                dependencies: [core_dep, ctrllib_dep])
 
 idelaydes_dep = declare_dependency(link_with: idelaydes_lib)

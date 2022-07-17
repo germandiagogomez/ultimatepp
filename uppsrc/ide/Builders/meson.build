@@ -22,11 +22,12 @@ sources = [
 
 
 
-
+idebuilders_dependencies = [core_dep]
 
 idebuilders_lib = library('IdeBuilders', sources: sources,
                            include_directories:
-                             [uppsrc_inc])
+                             [uppsrc_inc],
+                           dependencies: idebuilders_dependencies)
 
 idebuilders_dep = declare_dependency(link_with: idebuilders_lib,
                                      include_directories: uppsrc_inc)

@@ -3,8 +3,7 @@
 
 #include <Core/Core.h>
 
-#define ZSTD_STATIC_LINKING_ONLY
-#include "lib/zstd.h"
+#include <zstd.h>
 
 namespace Upp {
 

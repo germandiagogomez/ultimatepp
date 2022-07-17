@@ -22,12 +22,13 @@ sources = [
   'Pdb.cpp']
 
 
-
+idedebuggers_dependencies = [core_dep, ctrlcore_dep]
 
 idedebuggers_lib = library('IdeDebuggers', sources: sources,
                       include_directories:
                          [uppsrc_inc],
-                      dependencies: ctrlcore_dep)
+                      dependencies: idedebuggers_dependencies)
+
 
 idedebuggers_dep = declare_dependency(link_with: idedebuggers_lib,
                                      dependencies: ctrlcore_dep)

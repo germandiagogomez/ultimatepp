@@ -9,11 +9,12 @@ sources = [
   'md.cpp',
 ]
 
+idedesigners_dependencies = [core_dep, ctrlcore_dep]
 
 idedesigners_lib = library('IdeDesigners', sources: sources,
                          include_directories:
                            [uppsrc_inc],
-                         dependencies: gtk_dep)
+                         dependencies: idedesigners_dependencies)
 
 idedesigners_dep = declare_dependency(link_with: idedesigners_lib,
-                                     dependencies: gtk_dep)
+                                     dependencies: ctrlcore_dep)

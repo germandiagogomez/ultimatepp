@@ -12,10 +12,11 @@ sources = ['Ide.cpp',
            'Host.cpp']
 
 
+idecore_dependencies = [core_dep]
 
 idecore_lib = library('IdeCore', sources: sources,
-                      include_directories:
-                        [uppsrc_inc])
+                      dependencies: idecore_dependencies)
+
 
 idecore_dep = declare_dependency(link_with: idecore_lib,
                                  include_directories: uppsrc_inc)

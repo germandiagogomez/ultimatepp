@@ -18,7 +18,7 @@ sources = ['Lay.cpp',
 'TopicI.cpp']
 
 
-idebrowser_dependencies = [dependency('gtk+-3.0')]
+idebrowser_dependencies = [core_dep, ctrllib_dep]
 
 idebrowser_lib = library('IdeBrowser', sources: sources,
                          include_directories:

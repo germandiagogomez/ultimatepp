@@ -11,6 +11,8 @@ zstdupp_plugin_dependencies = [
 ]
 
 zstdupp_plugin_lib = library('zstdupp', sources: sources,
-                          dependencies: zstdupp_plugin_dependencies)
+                             dependencies: zstdupp_plugin_dependencies,
+                            implicit_include_directories: false)
 
-zstdupp_plugin_dep = declare_dependency(link_with: zstdupp_plugin_lib)
+zstdupp_plugin_dep = declare_dependency(link_with: zstdupp_plugin_lib,
+                                       dependencies: dependency('libzstd'))
