@@ -1,0 +1,6 @@
+[wrap-file]
+directory = xz-5.2.5
+
+[provide]
+liblzma = liblzma_dep
+

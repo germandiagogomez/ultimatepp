@@ -1,0 +1,5 @@
+[wrap-file]
+directory = lzmasdk
+
+[provide]
+dependency_names = liblzmasdk
