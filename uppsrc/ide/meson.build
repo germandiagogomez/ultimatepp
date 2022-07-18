@@ -93,6 +93,14 @@ ide_plugin_dependencies = [
   bmpupp_plugin_dep
 ]
 
+apple_frameworks = []
+
+if host_machine.system() == 'darwin'
+  apple_frameworks = dependency('appleframeworks', modules : ['AppKit',
+                                                              'Foundation',
+                                                              'CoreData'])
+endif
+
 ide_dependencies = [
   cppbase_dep,
   core_dep,
@@ -129,7 +137,9 @@ ide_dependencies = [
 ]
 
 
+
 ide_exe = executable('ide', sources: sources,
                      include_directories: [uppsrc_inc, root_inc],
                      implicit_include_directories: false,
-                     dependencies: [ide_dependencies, ide_plugin_dependencies])
+                     dependencies: [ide_dependencies, ide_plugin_dependencies,
+                                   apple_frameworks])

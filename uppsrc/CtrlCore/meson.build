@@ -62,14 +62,39 @@ sources = ['SystemDraw.cpp',
            'ParseRTF.cpp',
            'EncodeRTF.cpp']
 
+if host_machine.system() == 'darwin'
+  add_languages('objcpp')
+  sources += ['CocoDraw.mm',
+            'CocoImage.mm',
+            'CocoDrawText.mm',
+            'CocoWin.mm',
+            'CocoClip.mm',
+            'CocoDrawOp.mm',
+            'CocoProc.mm',
+            'CocoApp.mm'
+             ]
+endif
+
+
+
+
+
 gtk_dep = dependency('gtk+-3.0')
+
+apple_frameworks = []
+if host_machine.system() == 'darwin'
+  apple_frameworks = dependency('appleframeworks', modules : ['AppKit',
+                                                              'Foundation',
+                                                              'CoreData'])
+endif
 
 ctrlcore_lib = library('CtrlCore',
                        sources: sources,
                        include_directories:
                           [uppsrc_inc],
-                       dependencies: gtk_dep)
+                       implicit_include_directories: false,
+                       dependencies: [gtk_dep, apple_frameworks])
 
 ctrlcore_dep = declare_dependency(link_with: ctrlcore_lib,
-                                  include_directories: include_directories('..'),
+                                  include_directories: uppsrc_inc,
                                   dependencies: gtk_dep)

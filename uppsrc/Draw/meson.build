@@ -35,12 +35,19 @@ sources = ['Font.cpp',
            'Cham.cpp',
            'SColors.cpp']
 
-fontconfig_dep = dependency('fontconfig')
+draw_dependencies = [dependency('fontconfig')]
+if host_machine.system() == 'darwin'
+  add_languages('objcpp')
+  sources += ['FontCoco.mm']
+  draw_dependencies += [dependency('appleframeworks', modules: 'cocoa')]
+endif
+
+
 
 draw_lib = library('Draw', sources: sources,
                    include_directories:
                      [uppsrc_inc],
-                  dependencies: fontconfig_dep)
+                  dependencies: draw_dependencies)
 
 draw_dep = declare_dependency(link_with: draw_lib,
                   include_directories: uppsrc_inc)

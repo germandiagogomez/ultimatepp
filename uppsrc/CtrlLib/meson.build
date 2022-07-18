@@ -61,11 +61,24 @@ sources = [
 ]
 
 ctrllib_dependencies = [ctrlcore_dep, dependency('libnotify')]
+
+if host_machine.system() == 'darwin'
+  add_languages('objcpp')
+  sources += ['Cocoa.mm',
+              'ChCocoMM.mm',
+              'MacMenu.mm']
+  ctrllib_dependencies += [dependency('appleframeworks', modules: 'cocoa')]
+endif
+
+
+
+
 ctrllib_lib = library('CtrlLib',
                       sources: sources,
+                      implicit_include_directories: false,
                       include_directories:
                       [uppsrc_inc],
-                      dependencies: ctrlcore_dep)
+                      dependencies: ctrllib_dependencies)
 
 ctrllib_dep = declare_dependency(link_with: ctrllib_lib,
                                  include_directories: uppsrc_inc,
